@@ -63,3 +63,46 @@ function createUser($email, $password)
     $result = mysqli_query($conn, $sql);
     return $result;
 }
+
+
+/* ====================================================== */
+/* Get Head function */
+/* ====================================================== */
+
+function getHead()
+{
+    $output = '<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Todo List - Pure Coding</title>';
+
+    echo $output;
+}
+
+
+/* ====================================================== */
+/* Get Header function */
+/* ====================================================== */
+
+function getHeader()
+{
+    $output = '<header class="py-3 mb-4 border-bottom bg-white">
+        <div class="d-flex flex-wrap justify-content-center container">
+            <a href="todos.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <span class="fs-4">Todo List</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="todos.php" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="add-todo.php" class="nav-link text-dark">Add Todo</a></li>
+                <li class="nav-item"><a href="logout.php" class="nav-link bg-danger text-white">Logout</a></li>
+            </ul>
+        </div>
+    </header>';
+
+    echo $output;
+}
