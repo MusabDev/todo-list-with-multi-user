@@ -19,9 +19,9 @@ if (!isset($_SESSION["user_email"])) {
 <body>
     <?php getHeader(); ?>
     <div class="container">
-        <h1 class="mb-4 text-center fw-bold">Your Todos</h1>
         <div class="row">
-            <?php 
+            <?php
+            $todoId = mysqli_real_escape_string($conn, $_GET["id"]);
             // Get User Id based on user email
             $sql = "SELECT id FROM users WHERE email='{$_SESSION["user_email"]}'";
             $res = mysqli_query($conn, $sql);
@@ -32,15 +32,25 @@ if (!isset($_SESSION["user_email"])) {
             } else {
                 $user_id = 0;
             }
-            $sql1 = "SELECT * FROM todos WHERE user_id='{$user_id}' ORDER BY id DESC";
+            $sql1 = "SELECT * FROM todos WHERE id='{$todoId}' AND user_id='{$user_id}'";
             $res1 = mysqli_query($conn, $sql1);
             if (mysqli_num_rows($res1) > 0) {
                 foreach ($res1 as $todo) {
             ?>
-            <div class="col-lg-3 col-md-6">
-                <?php getTodo($todo); ?>
-            </div>
-            <?php } } else { echo "<h1 class='text-danger text-center fw-bold'>Todos are not available!</h1>"; } ?>
+                    <main>
+                        <h1><?php echo $todo["title"]; ?></h1>
+                        <p class="fs-5 col-md-8"><?php echo $todo["description"]; ?></p>
+
+                        <div class="mb-5">
+                            <a href="#" class="btn btn-primary btn-lg px-4 me-2">Edit</a>
+                            <a href="#" class="btn btn-danger btn-lg px-4">Delete</a>
+                        </div>
+                    </main>
+            <?php }
+            } else {
+                header("Location: todos.php");
+                die();
+            } ?>
         </div>
     </div>
 
