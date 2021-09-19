@@ -106,3 +106,42 @@ function getHeader()
 
     echo $output;
 }
+
+
+/* ====================================================== */
+/* Text Limit function */
+/* ====================================================== */
+
+function textLimit($string, $limit)
+{
+    if (strlen($string) > $limit) {
+        return substr($string, 0, $limit) . "...";
+    } else {
+        return $string;
+    }
+}
+
+
+
+/* ====================================================== */
+/* Get Todo function */
+/* ====================================================== */
+
+function getTodo($todo)
+{
+    $output = '<div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title">'. textLimit($todo['title'], 28) .'</h4>
+            <p class="card-text">'. textLimit($todo['description'], 75) .'</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="view-todo.php?id='. $todo['id'] .'" class="btn btn-sm btn-outline-secondary">View</a>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">'. $todo['date'] .'</small>
+            </div>
+        </div>
+    </div>';
+
+    echo $output;
+}
