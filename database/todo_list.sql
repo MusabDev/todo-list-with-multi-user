@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2021 at 06:38 PM
+-- Generation Time: Sep 19, 2021 at 05:03 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -31,6 +31,7 @@ CREATE TABLE `todos` (
   `id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` text NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,9 +39,12 @@ CREATE TABLE `todos` (
 -- Dumping data for table `todos`
 --
 
-INSERT INTO `todos` (`id`, `title`, `description`, `user_id`) VALUES
-(1, 'Create a PHP Program', 'In this PHP program I will be create a Todo List with Multi User registration system. It means Multiple user can register their account and add todos.', 1),
-(2, 'Upload a YouTube Video', 'Just for testing.....', 1);
+INSERT INTO `todos` (`id`, `title`, `description`, `date`, `user_id`) VALUES
+(1, 'Create a PHP Program', 'In this PHP program I will be create a Todo List with Multi User registration system. It means Multiple user can register their account and add todos.', '2021-09-15', 1),
+(2, 'Upload a YouTube Video', 'Just for testing.....', '2021-09-15', 1),
+(3, 'Newsapp for video', 'This is a basic news app and here all data from api.', '2021-09-15', 1),
+(4, 'Aliquam feugiat sapien in turpis dapibus, sit amet', 'Donec nec velit et velit scelerisque vehicula eget non sem.\r\nMauris ac purus nec nisi bibendum accumsan vel sit amet lectus.', '2021-09-15', 1),
+(5, 'Second user todo', 'here are some descriptions', '2021-09-15', 4);
 
 -- --------------------------------------------------------
 
@@ -60,7 +64,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
 (1, 'purecodingofficial@gmail.com', '0139a3c5cf42394be982e766c93f5ed0'),
-(3, 'musabwebdev@gmail.com', 'b4be228cfaab078906e7a1abc9b63f19');
+(3, 'musabwebdev@gmail.com', 'b4be228cfaab078906e7a1abc9b63f19'),
+(4, 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6');
 
 --
 -- Indexes for dumped tables
@@ -86,13 +91,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `todos`
 --
 ALTER TABLE `todos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
