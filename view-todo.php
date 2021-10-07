@@ -42,8 +42,8 @@ if (!isset($_SESSION["user_email"])) {
                         <p class="fs-5 col-md-8"><?php echo $todo["description"]; ?></p>
 
                         <div class="mb-5">
-                            <a href="#" class="btn btn-primary btn-lg px-4 me-2">Edit</a>
-                            <a href="#" class="btn btn-danger btn-lg px-4">Delete</a>
+                            <a href="<?php echo 'edit-todo.php?id='. $todo['id']; ?>" class="btn btn-primary btn-lg px-4 me-2">Edit</a>
+                            <a href="<?php echo 'delete-todo.php?id='. $todo['id']; ?>" class="btn btn-danger btn-lg px-4">Delete</a>
                         </div>
                     </main>
             <?php }

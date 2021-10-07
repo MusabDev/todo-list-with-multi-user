@@ -37,7 +37,7 @@ if (!isset($_SESSION["user_email"])) {
             if (mysqli_num_rows($res1) > 0) {
                 foreach ($res1 as $todo) {
             ?>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <?php getTodo($todo); ?>
             </div>
             <?php } } else { echo "<h1 class='text-danger text-center fw-bold'>Todos are not available!</h1>"; } ?>
